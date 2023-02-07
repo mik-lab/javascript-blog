@@ -79,12 +79,14 @@ function generateTitleLinks(){
     html = html + linkHTML;
   } 
 
+
   titleList.innerHTML = html;
   console.log(html);
 }
-const links = document.querySelectorAll('.titles a');
+generateTitleLinks();
 
+const links = document.querySelectorAll('.titles a');
 for(let link of links){
   link.addEventListener('click', titleClickHandler);
 }
-generateTitleLinks();
+
