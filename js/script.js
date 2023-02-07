@@ -33,8 +33,8 @@ function titleClickHandler(event){
 
   /*[DONE] find the correct article using the selector (value of 'href' attribute) */
 
-  const targetArticle = document.querySelector(articleSelector)
-  console.log(targetArticle)
+  const targetArticle = document.querySelector(articleSelector);
+  console.log(targetArticle);
 
   /*[DONE] add class 'active' to the correct article */
 
@@ -63,7 +63,7 @@ function generateTitleLinks(){
   
     /* get the article id */
 
-    const articleId = article.getAttribute("id");
+    const articleId = article.getAttribute('id');
 
     /* find the title element and get the title from the title element*/
 
@@ -77,9 +77,10 @@ function generateTitleLinks(){
     /* insert link into titleList */
 
     html = html + linkHTML;
-}
-titleList.innerHTML = html;
-console.log(html)
+  } 
+
+  titleList.innerHTML = html;
+  console.log(html);
 }
 const links = document.querySelectorAll('.titles a');
 
