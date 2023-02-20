@@ -49,14 +49,15 @@ function generateTitleLinks(customSelector = ''){
 
   /* remove contents of titleList */
 
-  const links = document.querySelector(optTitleListSelector + customSelector);
+  const links = document.querySelector(optTitleListSelector)
   const titleList = links;
   titleList.innerHTML = '';
 
   /* for each article */
 
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
   let html = '';
+  console.log(articles);
   for(let article of articles){
   
     /* get the article id */
@@ -195,6 +196,5 @@ function addClickListenersToTags(){
   /* END LOOP: for each link */
   }
 }
-
 
 addClickListenersToTags();
