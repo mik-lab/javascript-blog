@@ -43,7 +43,7 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles',
   optArticleTagsSelector = '.post-tags .list',
   optArticleAuthorsSelector = '.post-author',
-  optTagsListSelector = '.tags .list',
+  optTagsListSelector = '.tags.list',
   optCloudClassCount = '5',
   optCloudCLassPrefix = 'tag-size-';
 
@@ -105,7 +105,11 @@ function calculateTagsParams(tags){
 }
 
 function calculateTagClass(count , params){
-
+  const normalizedCount = count - params.min;
+  const normalizedMax = params.max - params.min;
+  const percentage = normalizedCount / normalizedMax;
+  const classNumber = Math.floor(percentage*(optCloudClassCount - 1) + 1);
+  return classNumber + optCloudCLassPrefix;
 }
 function generateTags(){
   /* create a new variable allTags with an empty object */
@@ -170,9 +174,10 @@ function generateTags(){
   let allTagsHTML = ' ';
 
   /* [NEW] START LOOP: for each tag in allTags: */
-  for(let tag of allTags){
+  for(let tag in allTags){
     /*[NEW] generate code of a link and add it to allTagsHTML */
-    allTagsHTML += tag + ' (' + allTags[tag] + ') ';
+    const tagLinkHTML = '<li class="">' + calculateTagClass(allTags[tag], tagsParams) + '</li>';
+    allTagsHTML += tagLinkHTML;
     /*[NEW] END LOOP: for each tag in allTags: */
   }
   /*[NEW] add html from allTagsHTML to tagList */
@@ -202,7 +207,6 @@ function tagClickHandler(event){
   /* find all tag links with class active */
   
   const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]'); 
-  
   /* START LOOP: for each active tag link */
   for(let tag of activeTagLinks){
     /* remove class active */
@@ -218,7 +222,6 @@ function tagClickHandler(event){
   /* START LOOP: for each found tag link */
 
   for(let tag of tagLinks){
-
     /* add class active */
 
     tag.classList.add('active');
@@ -232,6 +235,7 @@ function tagClickHandler(event){
    function addClickListenersToTags(){
       /* find all links to tags */
       const links = document.querySelectorAll('a[href^="#tag-"]');
+      console.log(links);
       /* START LOOP: for each link */
      for(link of links){
       /* add tagClickHandler as event listener for that link */
