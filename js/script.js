@@ -90,7 +90,6 @@ for(let link of links){
 function calculateTagsParams(tags){
   const params = {max:0 , min:999999};
   for(let tag in tags){
-    console.log(tag + ' is used ' + tags[tag] + ' times');
     if(tags[tag] > params.max){
       params.max = tags[tag];
     }
@@ -106,7 +105,7 @@ function calculateTagClass(count , params){
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
   const classNumber = Math.floor(percentage*(optCloudClassCount - 1) + 1);
-  return classNumber + optCloudCLassPrefix;
+  return optCloudCLassPrefix + classNumber;
 }
 function generateTags(){
   /* create a new variable allTags with an empty object */
@@ -175,8 +174,7 @@ function generateTags(){
     /*[NEW] END LOOP: for each tag in allTags: */
   }
   /*[NEW] add html from allTagsHTML to tagList */
-  tagList.innerHTML = allTagsHTML;  
-
+  tagList.innerHTML = allTagsHTML;
 
 }
 generateTags();
@@ -229,7 +227,6 @@ function tagClickHandler(event){
    function addClickListenersToTags(){
       /* find all links to tags */
       const links = document.querySelectorAll('a[href^="#tag-"]');
-      console.log(links);
       /* START LOOP: for each link */
      for(const link of links){
       /* add tagClickHandler as event listener for that link */
@@ -248,7 +245,6 @@ function generateAuthors(){
     let html =" ";
     const articleAuthors = article.getAttribute('data-author');
     const linkHTML = '<p href="#author-' + articleAuthors + '>' + articleAuthors + '</p>';
-    console.log(linkHTML);
     html = html + linkHTML;
     authorsWrapper.innerHTML = html;
   }
@@ -279,3 +275,4 @@ function addClickListenerToAuthors(){
   }
 }
 addClickListenerToAuthors();
+
