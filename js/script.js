@@ -81,14 +81,17 @@ function generateTitleLinks(customSelector = ''){
 
   titleList.innerHTML = html;
 
-  const linkTest = document.querySelectorAll('.titles a');
-  for(let link of linkTest){
+
+  const linksTest = document.querySelectorAll('.titles a');
+  for(let link of linksTest){
   link.addEventListener('click', titleClickHandler);
   }
-  
+}
+
 generateTitleLinks();
 
-}
+
+
 function calculateTagsParams(tags){
   const params = {max:0 , min:999999};
   for(let tag in tags){
