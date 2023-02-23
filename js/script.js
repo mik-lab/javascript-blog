@@ -80,12 +80,14 @@ function generateTitleLinks(customSelector = ''){
 
 
   titleList.innerHTML = html;
-}
+
+  const linkTest = document.querySelectorAll('.titles a');
+  for(let link of linkTest){
+  link.addEventListener('click', titleClickHandler);
+  }
+  
 generateTitleLinks();
 
-const links = document.querySelectorAll('.titles a');
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
 }
 function calculateTagsParams(tags){
   const params = {max:0 , min:999999};
