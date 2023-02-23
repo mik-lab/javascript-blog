@@ -51,7 +51,7 @@ function generateTitleLinks(customSelector = ''){
 
   /* remove contents of titleList */
 
-  const links = document.querySelector(optTitleListSelector)
+  const links = document.querySelector(optTitleListSelector);
   const titleList = links;
   titleList.innerHTML = '';
 
@@ -163,7 +163,7 @@ function generateTags(){
 
   /* [NEW] create variable for all links HTML code*/
   const tagsParams = calculateTagsParams(allTags);
-  console.log('tagsParams:', tagsParams)
+  console.log('tagsParams:', tagsParams);
   let allTagsHTML = ' ';
 
   /* [NEW] START LOOP: for each tag in allTags: */
@@ -224,15 +224,15 @@ function tagClickHandler(event){
   generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
-   function addClickListenersToTags(){
-      /* find all links to tags */
-      const links = document.querySelectorAll('a[href^="#tag-"]');
-      /* START LOOP: for each link */
-     for(const link of links){
-      /* add tagClickHandler as event listener for that link */
-       link.addEventListener('click', tagClickHandler);
-      /* END LOOP: for each link */
-     } 
+function addClickListenersToTags(){
+/* find all links to tags */
+  const links = document.querySelectorAll('a[href^="#tag-"]');
+  /* START LOOP: for each link */
+  for(const link of links){
+  /* add tagClickHandler as event listener for that link */
+  link.addEventListener('click', tagClickHandler);
+/* END LOOP: for each link */
+} 
 } 
 
 addClickListenersToTags();
