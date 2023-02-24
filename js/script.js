@@ -2,7 +2,8 @@
 
 const templates = {
   articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
-  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML)
+  tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
+  authorCloudLink: Handlebars.compile(document.querySelector('#template-author-cloud-link').innerHTML)
 }
 
 const optArticleSelector = '.post',
@@ -283,7 +284,7 @@ function generateAuthors(){
       className: 'author-' + author
     });
   }
-  authorList.innerHTML = templates.tagCloudLink(allAuthorData);
+  authorList.innerHTML = templates.authorCloudLink(allAuthorData);
   console.log(authorList);
 }
 
